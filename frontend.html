@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conexão ApiRESTfull</title>
+  </head>
+  <body>
+    <input id="descricao" placeholder="Descrição" />
+    <button onclick="adicionarTarefa()">Adicionar Tarefa</button>
+    <button onclick="excluirTarefa()">Excluir Tarefa</button>
+    <script>
+      function adicionarTarefa() {
+        const API = `http://localhost:3000/tarefas`;
+        const descricao = document.getElementById("descricao").value;
+        fetch(API, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ descricao }),
+        });
+      }
+
+      function excluirTarefa() {
+        const id = document.getElementById("descricao").value;
+
+        const API = `http://localhost:3000/tarefas/${id}`;
+        fetch(API, {
+          method: "DELETE",
+        });
+      }
+    </script>
+  </body>
+</html>
